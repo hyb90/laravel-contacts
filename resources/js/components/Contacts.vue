@@ -11,18 +11,18 @@ import axios, { Button } from '../../../public/js/app';
                         <form action="#" @submit.prevent="edit ? updateContact(contact.id) : createContact()">
                             <div class="form-group">
                             <lable for="title">Name</lable>
-                            <input v-model="contact.name" type="text" name="name" class="form-control">
+                            <input v-model="contact.name" type="text" name="name" class="form-control" required>
 
                             </div>
                             <div class="form-group">
                             <lable for="title">Email</lable>
-                            <input v-model="contact.email"  type="text" name="email" class="form-control">
+                            <input v-model="contact.email"  type="email" name="email" class="form-control" required>
 
                             </div>
                             <div class="form-group">
                             <lable for="title">Phone Number</lable>
-                            <input v-model="contact.phone"  type="text" name="phone" class="form-control">
-
+                            <input v-model="contact.phone"  type="tel" name="phone" class="form-control" pattern="[0-9]{3}-[0-9]{3}-[0-9]{6}" required>
+                            <small>Format: 123-456-789000</small>
                             </div>
 
                             <div class="form-group">
@@ -41,7 +41,7 @@ import axios, { Button } from '../../../public/js/app';
         <h2>Contacts list</h2>
         <ul class='list-group'>
             <li class='list-group-item' v-for="contact in list" v-bind:key="contact.id">
-                Name: {{contact.name}} || phone Number: {{contact.phone}}
+                Name: {{contact.name}} || phone Number: +{{contact.phone}}
                 <button @click="showContact(contact.id)" class="btn btn-primary btn-xs">Edit</button>
                 <button @click="deleteContact(contact.id)" class="btn btn-danger btn-xs">delete</button>
             </li>

@@ -37731,7 +37731,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", name: "name" },
+                      attrs: { type: "text", name: "name", required: "" },
                       domProps: { value: _vm.contact.name },
                       on: {
                         input: function($event) {
@@ -37762,7 +37762,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", name: "email" },
+                      attrs: { type: "email", name: "email", required: "" },
                       domProps: { value: _vm.contact.email },
                       on: {
                         input: function($event) {
@@ -37795,7 +37795,12 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", name: "phone" },
+                      attrs: {
+                        type: "tel",
+                        name: "phone",
+                        pattern: "[0-9]{3}-[0-9]{3}-[0-9]{6}",
+                        required: ""
+                      },
                       domProps: { value: _vm.contact.phone },
                       on: {
                         input: function($event) {
@@ -37805,7 +37810,9 @@ var render = function() {
                           _vm.$set(_vm.contact, "phone", $event.target.value)
                         }
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    _c("small", [_vm._v("Format: 123-456-789000")])
                   ],
                   1
                 ),
@@ -37864,7 +37871,7 @@ var render = function() {
           _vm._v(
             "\n            Name: " +
               _vm._s(contact.name) +
-              " || phone Number: " +
+              " || phone Number: +" +
               _vm._s(contact.phone) +
               "\n            "
           ),
